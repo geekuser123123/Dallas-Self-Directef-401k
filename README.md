@@ -27,11 +27,11 @@ To preview it locally, run `npm run serve` or serve `dist/` with any static serv
 
 | Path | Purpose |
 |---|---|
-| `site.config.mjs` | **Single source of truth** for business name, phone, email, address, hours, services, images and domain |
+| `site.config.mjs` | **Single source of truth** for business name, phone, email, address, hours, services and domain |
 | `src/pages/` | Page content: home, about, services, self-directed-401k, contact, legal |
 | `src/layout.mjs` | Shared `<head>` (SEO meta, canonical, Open Graph, JSON-LD), header and footer |
 | `src/lib.mjs` | Helpers: placeholders, images, schema, services list |
-| `src/assets/` | CSS, JS (about 3 KB, no frameworks), logo |
+| `src/assets/` | CSS, JS (about 3 KB, no frameworks), self-hosted fonts, logo, social share image |
 | `src/static/` | Favicons, copied to the site root |
 | `build.mjs` | Renders pages and generates `sitemap.xml` and `robots.txt` |
 | `netlify.toml` | Build settings, security headers (CSP, HSTS), caching, redirects |
@@ -57,7 +57,7 @@ To preview it locally, run `npm run serve` or serve `dist/` with any static serv
   **only** when `locationType: 'office'` and a real address is supplied.
 - Services marked "only if actually offered" (plan setup, existing plan support) are off
   until you enable them.
-- Stock photos are illustrative. They are never presented as your office or team.
+- No stock photography: visuals are custom, code-built diagrams in the brand palette. Fonts are self-hosted (no third-party requests).
 
 ## Before launch
 

@@ -1,4 +1,4 @@
-import { icon, pageHero, ctaBand, faqList, SERVICES, SITE, ORG_ID, B } from '../lib.mjs';
+import { icon, pageHero, esc, ctaBand, faqList, SERVICES, SITE, ORG_ID, B } from '../lib.mjs';
 
 const crumbs = [
   { name: 'Home', path: '/' },
@@ -70,7 +70,6 @@ export default {
   description:
     'Explore Self-Directed 401(k) education and retirement plan support for entrepreneurs, self-employed professionals, and business owners.',
   crumbs,
-  ogImageKey: 'consultation',
   schema: [
     ...SERVICES.map((s) => ({
       '@type': 'Service',
@@ -88,8 +87,12 @@ ${pageHero({
   eyebrow: 'Services',
   title: 'Self-Directed 401(k) Education & Support',
   lead: 'Educational services for entrepreneurs, self-employed professionals and business owners who want to understand self-directed retirement plan structures.',
-  image: 'consultation',
   crumbs,
+  aside: `<dl class="hero-facts">
+    <div><dt>Focus</dt><dd>Retirement plan education</dd></div>
+    <div><dt>Format</dt><dd>One-on-one consultations</dd></div>
+    <div><dt>Serving</dt><dd>${esc(B.serviceArea.join(' · '))}</dd></div>
+  </dl>`,
 })}
 
 <section class="section section--tight" aria-label="Service overview">
@@ -97,8 +100,8 @@ ${pageHero({
     <nav class="pill-nav" aria-label="Jump to a service">
       ${SERVICES.map((s) => `<a href="#${s.id}">${s.title}</a>`).join('')}
     </nav>
-    <div class="notice">
-      <strong>What we do — and don't do.</strong> Our services are educational. We do not act as a custodian, plan trustee, third-party administrator (TPA), registered investment adviser or fiduciary, and we do not provide legal or tax advice. Where those services are needed, we encourage you to engage qualified, appropriately licensed providers.
+    <div class="notice">${icon('shield', 'notice__icon')}<p>
+      <strong>What we do — and don't do.</strong> Our services are educational. We do not act as a custodian, plan trustee, third-party administrator (TPA), registered investment adviser or fiduciary, and we do not provide legal or tax advice. Where those services are needed, we encourage you to engage qualified, appropriately licensed providers.</p>
     </div>
   </div>
 </section>

@@ -31,7 +31,7 @@ export default {
     googleSiteVerification: null,
     locale: 'en_US',
     language: 'en-US',
-    // Optional default social share image (absolute URL). null = use hero image.
+    // Optional social share image (absolute URL). null = built-in branded /assets/img/og-image.png
     ogImage: null,
   },
 
@@ -141,37 +141,4 @@ export default {
     plausibleDomain: null,
   },
 
-  /**
-   * IMAGES — Unsplash CDN (serves WebP/AVIF automatically via auto=format).
-   * Before launch: open each URL, confirm the photo suits the brand and that
-   * the alt text describes it accurately. For best performance you may
-   * download, convert to WebP and place them in src/assets/img/.
-   * Photos are illustrative stock images — never captioned as our office/team.
-   */
-  images: {
-    hero: {
-      id: 'photo-1556761175-5973dc0f32e7',
-      alt: 'Business professionals talking around a meeting table in a bright office',
-    },
-    consultation: {
-      id: 'photo-1600880292203-757bb62b4baf',
-      alt: 'Two professionals reviewing information together on a laptop',
-    },
-    documents: {
-      id: 'photo-1554224155-6726b3ff858f',
-      alt: 'Person reviewing financial paperwork with a calculator',
-    },
-    office: {
-      id: 'photo-1497366216548-37526070297c',
-      alt: 'Modern open-plan office interior with natural light',
-    },
-    signing: {
-      id: 'photo-1450101499163-c8848c66ca85',
-      alt: 'Close-up of a person reviewing and signing documents at a desk',
-    },
-    meeting: {
-      id: 'photo-1556761175-b413da4baf72',
-      alt: 'Small group of business owners in a planning discussion',
-    },
-  },
 };

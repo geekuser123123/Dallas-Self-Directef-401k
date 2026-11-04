@@ -61,7 +61,6 @@ give legal or tax advice. If any of that is wrong, edit:
 - [ ] Add the Search Console HTML-tag code to `site.googleSiteVerification` (see `SEARCH-CONSOLE-SETUP.md`).
 - [ ] Netlify → Forms: enable form detection and set up an email notification (or an outgoing webhook) for the `consultation` form. Send a test submission.
 - [ ] Optional: enable privacy-friendly analytics (`analytics.plausibleDomain`).
-- [ ] Review each stock photo URL in `images` and confirm the alt text matches the image.
-  (The photos are served from the Unsplash CDN. You can swap in other Unsplash or Pexels images by changing the ID.)
+- [ ] Optional: add genuine photography (owner portrait, real office if applicable) — the design currently uses custom brand visuals instead of stock photos, so nothing misrepresents the business.
 - [ ] Have the Privacy Policy, Terms and Disclosures reviewed by an attorney.
 - [ ] Set `STRICT = "1"` in `netlify.toml` once everything above is complete.

@@ -15,7 +15,7 @@ const legal = (path, name, title, description, lead, body) => {
     description,
     crumbs,
     body: () => `
-${pageHero({ eyebrow: 'Legal', title: name, lead, crumbs })}
+${pageHero({ compact: true, eyebrow: 'Legal', title: name, lead, crumbs })}
 <section class="section section--tight-top">
   <div class="container narrow prose legal">
     <p class="muted">Last updated: ${UPDATED}</p>
@@ -54,8 +54,6 @@ export const privacy = legal(
 <p>We use trusted service providers to operate the website. They process information on our behalf and only as needed to provide their services:</p>
 <ul>
   <li><strong>Netlify, Inc.</strong> — website hosting and processing of contact form submissions.</li>
-  <li><strong>Google Fonts</strong> — delivers the typefaces used on this site; your browser connects to Google's servers to load them.</li>
-  <li><strong>Unsplash</strong> — delivers some of the stock photographs displayed on this site from its image servers.</li>
   ${cfg.analytics.plausibleDomain ? '<li><strong>Plausible Analytics</strong> — privacy-focused, cookie-free website analytics that collect aggregated usage statistics.</li>' : ''}
   <li>Email and business software we use to receive and respond to your messages.</li>
 </ul>
@@ -113,7 +111,7 @@ export const terms = legal(
 <p>We work to keep content accurate and current, but we make no guarantee that all information is complete, accurate or up to date. Rules, limits and interpretations change, and we may update content without notice.</p>
 
 <h2>Intellectual property</h2>
-<p>The text, design, logos and other original content on this website are owned by ${N} or used with permission and are protected by applicable intellectual property laws. Stock photographs are used under their respective licenses. You may view and print pages for personal, non-commercial use; any other use requires our prior written permission.</p>
+<p>The text, design, logos and other original content on this website are owned by ${N} or used with permission and are protected by applicable intellectual property laws. Typefaces are used under the SIL Open Font License. You may view and print pages for personal, non-commercial use; any other use requires our prior written permission.</p>
 
 <h2>Third-party links</h2>
 <p>Links to third-party websites are provided for convenience. We do not control and are not responsible for the content, policies or practices of third-party websites, and a link does not imply endorsement.</p>
@@ -180,7 +178,7 @@ export const thankYou = {
   description: `Thank you for contacting ${B.publicName}. We have received your consultation request.`,
   noindex: true,
   body: () => `
-${pageHero({ eyebrow: 'Request received', title: 'Thank you — we\'ve received your request', lead: 'We will review your message and follow up by email or phone to arrange a time to talk.' })}
+${pageHero({ compact: true, eyebrow: 'Request received', title: 'Thank you — we\'ve received your request', lead: 'We will review your message and follow up by email or phone to arrange a time to talk.' })}
 <section class="section section--tight-top">
   <div class="container narrow center">
     <p>While you wait, you may find our <a href="/self-directed-401k/">Self-Directed 401(k) guide</a> helpful.</p>
@@ -196,7 +194,7 @@ export const notFound = {
   description: 'The page you were looking for could not be found.',
   noindex: true,
   body: () => `
-${pageHero({ eyebrow: 'Error 404', title: 'We couldn\'t find that page', lead: 'The page may have moved or no longer exists.' })}
+${pageHero({ compact: true, eyebrow: 'Error 404', title: 'We couldn\'t find that page', lead: 'The page may have moved or no longer exists.' })}
 <section class="section section--tight-top">
   <div class="container narrow center">
     <div class="btn-row btn-row--center">

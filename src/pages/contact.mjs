@@ -31,6 +31,7 @@ export default {
   pageType: 'ContactPage',
   body: () => `
 ${pageHero({
+  compact: true,
   eyebrow: 'Contact',
   title: 'Schedule a Consultation',
   lead: 'Tell us a little about your business and what you would like to understand. We will follow up to arrange a time to talk.',
@@ -52,8 +53,7 @@ ${pageHero({
         <li>${icon('clock', 'contact-list__icon')}<div><span class="contact-list__label">Business hours (Central Time)</span>${hoursHtml()}</div></li>
       </ul>
       ${mapEmbed()}
-      <div class="notice notice--small">
-        Please do not send account numbers, Social Security numbers or other sensitive personal information through this form.
+      <div class="notice notice--small">${icon('shield', 'notice__icon')}<p>Please do not send account numbers, Social Security numbers or other sensitive personal information through this form.</p>
       </div>
     </div>
 

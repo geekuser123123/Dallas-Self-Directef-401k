@@ -24,16 +24,7 @@ export function ph(value, label) {
 
 export const absUrl = (path) => SITE + path;
 
-/** Unsplash CDN image with responsive srcset (auto WebP/AVIF). */
-export function img(key, { widths = [480, 768, 1200, 1600], sizes = '100vw', w = 1600, h = 1067, eager = false, cls = '' } = {}) {
-  const im = config.images[key];
-  const base = `https://images.unsplash.com/${im.id}?auto=format&fit=crop&q=70`;
-  const ratio = h / w;
-  const src = (width) => `${base}&w=${width}&h=${Math.round(width * ratio)}`;
-  return `<img src="${src(w)}" srcset="${widths.map((x) => `${src(x)} ${x}w`).join(', ')}" sizes="${sizes}" width="${w}" height="${h}" alt="${esc(im.alt)}"${cls ? ` class="${cls}"` : ''} ${eager ? 'fetchpriority="high" decoding="async"' : 'loading="lazy" decoding="async"'}>`;
-}
-export const imgUrl = (key, w = 1200, h = 630) =>
-  `https://images.unsplash.com/${config.images[key].id}?auto=format&fit=crop&q=70&w=${w}&h=${h}`;
+export const OG_IMAGE = () => config.site.ogImage || `${SITE}/assets/img/og-image.png`;
 
 // ---------------------------------------------------------------- services
 export const SERVICES = [
@@ -164,7 +155,7 @@ export function organizationSchema() {
   if (B.sameAs?.length) o.sameAs = B.sameAs;
   if (isLocal) {
     o.address = { '@type': 'PostalAddress', ...B.address };
-    o.image = imgUrl('office');
+    o.image = OG_IMAGE();
     if (B.geo) o.geo = { '@type': 'GeoCoordinates', ...B.geo };
     if (B.hours?.length)
       o.openingHoursSpecification = B.hours.map((h) => ({
@@ -223,17 +214,19 @@ export function faqList(faqs, headingLevel = 3) {
 
 export function ctaBand({ heading, text, button = 'Schedule a Consultation', href = '/contact/' }) {
   return `<section class="cta-band" aria-labelledby="cta-h">
-  <div class="container cta-band__inner">
-    <div>
-      <h2 id="cta-h">${heading}</h2>
-      <p>${text}</p>
+  <div class="container">
+    <div class="cta-band__inner">
+      <div>
+        <h2 id="cta-h">${heading}</h2>
+        <p>${text}</p>
+      </div>
+      <a class="btn btn--gold btn--lg" href="${href}">${button}</a>
     </div>
-    <a class="btn btn--gold btn--lg" href="${href}">${button}</a>
   </div>
 </section>`;
 }
 
-export function pageHero({ eyebrow, title, lead, image, crumbs }) {
+export function pageHero({ eyebrow, title, lead, crumbs, aside = '', compact = false }) {
   const bc = crumbs
     ? `<nav class="breadcrumbs" aria-label="Breadcrumb"><ol>${crumbs
         .map((c, i) =>
@@ -241,13 +234,80 @@ export function pageHero({ eyebrow, title, lead, image, crumbs }) {
         )
         .join('')}</ol></nav>`
     : '';
-  return `<section class="page-hero${image ? ' page-hero--image' : ''}">
-  ${image ? `<div class="page-hero__media">${img(image, { eager: true, w: 1600, h: 700, sizes: '100vw' })}</div>` : ''}
+  return `<section class="page-hero${compact ? ' page-hero--compact' : ''}${aside ? ' page-hero--aside' : ''}">
+  <div class="hero-pattern" aria-hidden="true"></div>
   <div class="container page-hero__inner">
-    ${bc}
-    ${eyebrow ? `<p class="eyebrow">${eyebrow}</p>` : ''}
-    <h1>${title}</h1>
-    ${lead ? `<p class="lead">${lead}</p>` : ''}
+    <div class="page-hero__text">
+      ${bc}
+      ${eyebrow ? `<p class="eyebrow eyebrow--light">${eyebrow}</p>` : ''}
+      <h1>${title}</h1>
+      ${lead ? `<p class="lead">${lead}</p>` : ''}
+    </div>
+    ${aside ? `<div class="page-hero__aside">${aside}</div>` : ''}
   </div>
 </section>`;
+}
+
+// ---------------------------------------------------------------- visuals
+// Illustrative, educational UI compositions (no stock photography).
+
+const tick = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m6 12 4 4 8-8" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+/** Hero visual: how a self-directed 401(k) is put together. */
+export function structureVisual() {
+  const rows = [
+    ['briefcase', 'Plan sponsor', 'Your business'],
+    ['book', 'Plan document', 'Permits self-direction'],
+    ['shield', 'Trust & trustee', 'Holds plan assets'],
+    ['layers', 'Investments', 'As the plan permits'],
+  ];
+  return `<figure class="visual" aria-label="Illustration: the four building blocks of a self-directed 401(k) — plan sponsor, plan document, trust and trustee, and investments">
+  <div class="vcard vcard--main" aria-hidden="true">
+    <div class="vcard__head"><span class="vcard__dot"></span><span>Self-Directed 401(k)</span><span class="vcard__tag">Plan structure</span></div>
+    <ol class="vstack">
+      ${rows.map(([ic, t, d], i) => `<li><span class="vstack__icon">${icon(ic)}</span><span class="vstack__text"><strong>${t}</strong><span>${d}</span></span><span class="vstack__n">0${i + 1}</span></li>`).join('')}
+    </ol>
+  </div>
+  <div class="vcard vcard--float" aria-hidden="true">
+    <p class="vcard__label">Owner responsibilities</p>
+    <ul class="vchecks">
+      <li>${tick}Recordkeeping</li>
+      <li>${tick}Annual valuation</li>
+      <li>${tick}Required filings</li>
+    </ul>
+  </div>
+  <div class="vbadge" aria-hidden="true">${icon('book')}<span>Education, not advice</span></div>
+</figure>`;
+}
+
+/** Comparison card: typical employer 401(k) vs self-directed. */
+export function compareVisual() {
+  const rows = [
+    ['Investment choices', 'Pre-selected fund menu', 'Broader range, if the plan permits'],
+    ['Who directs', 'Participant, within the menu', 'Participant or trustee'],
+    ['Typical sponsor', 'Employer for its workforce', 'Business owner, often owner-only'],
+    ['Administration', 'Largely provider-managed', 'More owner responsibility'],
+  ];
+  return `<figure class="compare">
+  <figcaption class="compare__cap">At a glance: how they differ</figcaption>
+  <table>
+    <thead><tr><th scope="col"><span class="sr-only">Feature</span></th><th scope="col">Typical employer 401(k)</th><th scope="col" class="is-hl">Self-directed 401(k)</th></tr></thead>
+    <tbody>${rows.map(([a, b, c]) => `<tr><th scope="row">${a}</th><td>${b}</td><td class="is-hl">${c}</td></tr>`).join('')}</tbody>
+  </table>
+  <p class="compare__note">General comparison. Features depend on each plan document and provider.</p>
+</figure>`;
+}
+
+/** Flow diagram for the guide page. */
+export function flowVisual() {
+  const steps = [
+    ['briefcase', 'Business', 'Adopts the plan as sponsor'],
+    ['book', 'Plan document', 'Defines what is permitted'],
+    ['shield', 'Trust', 'Trustee holds plan assets'],
+    ['layers', 'Plan assets', 'Titled in the plan’s name'],
+  ];
+  return `<figure class="flow" aria-label="Diagram: business adopts a plan document; a trust holds the plan assets; investments are titled in the plan's name">
+  <ol>${steps.map(([ic, t, d]) => `<li><span class="flow__icon">${icon(ic)}</span><strong>${t}</strong><span>${d}</span></li>`).join('')}</ol>
+  <figcaption>Contributions, income and expenses flow into and out of the plan — never through personal or business accounts.</figcaption>
+</figure>`;
 }

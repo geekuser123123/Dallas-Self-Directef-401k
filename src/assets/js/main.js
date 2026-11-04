@@ -10,16 +10,17 @@
       toggle.setAttribute('aria-expanded', String(open));
       nav.classList.toggle('is-open', open);
       header.classList.toggle('is-open', open);
+      document.body.classList.toggle('nav-open', open);
     };
     toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') { setOpen(false); toggle.focus(); }
     });
-    window.matchMedia('(min-width: 961px)').addEventListener('change', (e) => e.matches && setOpen(false));
+    window.matchMedia('(min-width: 981px)').addEventListener('change', (e) => e.matches && setOpen(false));
   }
 
   // Header background after scrolling (homepage overlay header)
-  if (header && document.body.classList.contains('is-home')) {
+  if (header) {
     const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 24);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });

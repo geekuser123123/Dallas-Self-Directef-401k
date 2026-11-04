@@ -1,4 +1,4 @@
-import { cfg, B, SITE, esc, absUrl, imgUrl, organizationSchema, websiteSchema, breadcrumbSchema, phoneHtml, emailHtml, showAddress, addressHtml, SERVICES } from './lib.mjs';
+import { cfg, B, SITE, esc, absUrl, OG_IMAGE, organizationSchema, websiteSchema, breadcrumbSchema, phoneHtml, emailHtml, showAddress, addressHtml, SERVICES } from './lib.mjs';
 
 const NAV = [
   { name: 'Self-Directed 401(k)', path: '/self-directed-401k/' },
@@ -97,7 +97,7 @@ export function render(page) {
   if (page.crumbs) graph.push({ ...breadcrumbSchema(page.crumbs), '@id': canonical + '#breadcrumb' });
   if (page.schema) graph.push(...page.schema);
   const ld = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c');
-  const og = cfg.site.ogImage || imgUrl(page.ogImageKey || 'hero');
+  const og = OG_IMAGE();
   const analytics = cfg.analytics.plausibleDomain
     ? `<script defer data-domain="${esc(cfg.analytics.plausibleDomain)}" src="https://plausible.io/js/script.js"></script>`
     : '';
@@ -126,10 +126,8 @@ ${cfg.site.googleSiteVerification ? `<meta name="google-site-verification" conte
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap">
+<link rel="preload" href="/assets/fonts/playfair-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/css/styles.css?v=${page.assetVersion}">
 <script type="application/ld+json">${ld}</script>
 ${analytics}

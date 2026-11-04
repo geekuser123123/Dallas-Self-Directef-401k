@@ -1,4 +1,4 @@
-import { img, icon, pageHero, ctaBand, faqList, faqSchema, SITE, ORG_ID, B } from '../lib.mjs';
+import { icon, flowVisual, pageHero, ctaBand, faqList, faqSchema, SITE, ORG_ID, B } from '../lib.mjs';
 
 const crumbs = [
   { name: 'Home', path: '/' },
@@ -52,7 +52,6 @@ export default {
     'Learn how Self-Directed 401(k) plans work, who may qualify, and what business owners should understand about retirement plan options.',
   crumbs,
   pageType: 'WebPage',
-  ogImageKey: 'signing',
   schema: [
     {
       '@type': 'Article',
@@ -71,8 +70,12 @@ export default {
 ${pageHero({
   eyebrow: 'Retirement Plan Guide',
   title: 'Understanding Self-Directed 401(k) Plans',
+  aside: `<dl class="hero-facts">
+    <div><dt>In this guide</dt><dd>How plans work, eligibility, investments &amp; rules</dd></div>
+    <div><dt>Written for</dt><dd>Business owners &amp; the self-employed</dd></div>
+    <div><dt>Format</dt><dd>General educational overview</dd></div>
+  </dl>`,
   lead: 'A clear, educational guide for Dallas business owners and self-employed professionals: what a Self-Directed 401(k) is, how it works, who may be eligible, and the rules that come with it.',
-  image: 'signing',
   crumbs,
 })}
 
@@ -87,6 +90,7 @@ ${pageHero({
       <li><a href="#rules">Rules & responsibilities</a></li>
       <li><a href="#questions">Common questions</a></li>
     </ol>
+    <a class="btn btn--gold btn--sm" href="/contact/">Schedule a Consultation</a>
   </aside>
 
   <article class="guide__body prose">
@@ -97,7 +101,7 @@ ${pageHero({
       <p>"Self-directed" describes <em>who chooses the investments</em> and <em>what the plan permits</em>. It does not change the fundamental tax rules: contributions are subject to annual IRS limits, distributions are subject to plan and tax rules, and the plan must stay in compliance to keep its tax-advantaged status.</p>
     </section>
 
-    <figure class="guide__figure">${img('documents', { w: 1200, h: 675, widths: [480, 800, 1200], sizes: '(min-width: 1100px) 760px, 100vw' })}</figure>
+    ${flowVisual()}
 
     <section id="how-it-works" aria-labelledby="how-h">
       <h2 id="how-h">How does a Self-Directed 401(k) work?</h2>

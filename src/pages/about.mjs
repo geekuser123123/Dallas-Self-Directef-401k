@@ -1,4 +1,4 @@
-import { img, icon, pageHero, ctaBand, ph, esc, B, cfg, phoneHtml, emailHtml, showAddress, addressHtml } from '../lib.mjs';
+import { icon, pageHero, ctaBand, ph, esc, B, cfg, phoneHtml, emailHtml, showAddress, addressHtml } from '../lib.mjs';
 
 const crumbs = [
   { name: 'Home', path: '/' },
@@ -32,26 +32,36 @@ export default {
     'Learn about Dallas Self-Directed 401(k), our approach to retirement plan education, and the people and services behind our business.',
   crumbs,
   pageType: 'AboutPage',
-  ogImageKey: 'office',
   body: () => `
 ${pageHero({
   eyebrow: 'About Us',
   title: `About ${esc(B.publicName)}`,
   lead: 'Helping Dallas-area business owners and self-employed professionals understand self-directed retirement plan structures — clearly, accurately and without pressure.',
-  image: 'office',
   crumbs,
+  aside: `<dl class="hero-facts">
+    <div><dt>Focus</dt><dd>Self-Directed &amp; Solo 401(k) education</dd></div>
+    <div><dt>Approach</dt><dd>Education first — never a sales pitch</dd></div>
+    <div><dt>Serving</dt><dd>${esc(B.serviceArea.join(' · '))}</dd></div>
+  </dl>`,
 })}
 
 <section class="section" aria-labelledby="who-we-are-h">
   <div class="container split">
     <div class="split__text">
       <p class="eyebrow">Who We Are</p>
-      <h2 id="who-we-are-h">About ${esc(B.publicName)}</h2>
+      <h2 id="who-we-are-h">Retirement plan education, done properly</h2>
       <p>${esc(B.publicName)} focuses on education about Self-Directed 401(k) and Solo 401(k) plans for entrepreneurs, small business owners and self-employed professionals in Dallas and the surrounding area.</p>
       <div class="prose">${cfg.about.story ? cfg.about.story : `<p>${ph(null, 'Company history — real background, when the business started and why. To be provided by the owner.')}</p>`}</div>
       ${B.owner ? `<p><strong>Founded by:</strong> ${esc(B.owner)}</p>` : `<p>${ph(null, 'Owner / principal name — to be provided')}</p>`}
     </div>
-    <figure class="split__media">${img('consultation', { w: 900, h: 1000, widths: [480, 720, 900], sizes: '(min-width: 960px) 45vw, 100vw' })}<figcaption class="sr-only">Illustrative stock photograph.</figcaption></figure>
+    <aside class="principles" aria-label="Our principles">
+      <p class="principles__label">Our principles</p>
+      <ol>
+        <li><span>01</span><div><strong>Accuracy over enthusiasm</strong><p>We explain the rules and risks, not only the possibilities.</p></div></li>
+        <li><span>02</span><div><strong>Plain English</strong><p>Complex plan concepts, explained clearly.</p></div></li>
+        <li><span>03</span><div><strong>Your decision</strong><p>We inform; you decide, with advisors you trust.</p></div></li>
+      </ol>
+    </aside>
   </div>
 </section>
 
@@ -59,7 +69,7 @@ ${pageHero({
   <div class="container narrow center">
     <p class="eyebrow">Our Mission</p>
     <h2 id="mission-h">Make self-directed retirement plans understandable</h2>
-    <p class="lead-sm">Our mission is to help business owners understand how self-directed retirement plan structures work — the opportunities, the rules and the responsibilities — so they can make informed decisions together with the qualified professionals they trust.</p>
+    <p class="mission">Our mission is to help business owners understand how self-directed retirement plan structures work — the opportunities, the rules and the responsibilities — so they can make informed decisions together with the qualified professionals they trust.</p>
   </div>
 </section>
 
@@ -79,7 +89,12 @@ ${pageHero({
 
 <section class="section section--light" aria-labelledby="serve-h">
   <div class="container split split--reverse">
-    <figure class="split__media">${img('meeting', { w: 900, h: 900, widths: [480, 720, 900], sizes: '(min-width: 960px) 45vw, 100vw' })}<figcaption class="sr-only">Illustrative stock photograph.</figcaption></figure>
+    <div class="area-card">
+      ${icon('pin', 'area-card__icon')}
+      <p class="area-card__label">Service area</p>
+      <ul>${B.serviceArea.map((a) => `<li>${esc(a)}</li>`).join('')}</ul>
+      <p class="muted">Consultations by appointment.</p>
+    </div>
     <div class="split__text">
       <p class="eyebrow">Who We Serve</p>
       <h2 id="serve-h">Business owners across the Dallas area</h2>
