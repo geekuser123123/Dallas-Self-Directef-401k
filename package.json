@@ -1,0 +1,13 @@
+{
+  "name": "dallas-self-directed-401k",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Website for Dallas Self-Directed 401(k) — static, zero-dependency build for Netlify.",
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "build:strict": "STRICT=1 node build.mjs",
+    "serve": "node build.mjs && npx --yes serve dist -l 8080"
+  },
+  "engines": { "node": ">=18" }
+}
