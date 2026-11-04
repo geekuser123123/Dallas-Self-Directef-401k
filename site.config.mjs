@@ -51,8 +51,8 @@ export default {
     owner: null, // [TO BE PROVIDED] — shown on About page only if provided
     foundingYear: null, // only if real; never estimated
 
-    phone: null, // [TO BE PROVIDED] display format, e.g. "(214) 555-0100"
-    phoneE164: null, // e.g. "+12145550100" — used for tel: links and schema
+    phone: '(469) 405-1397', // display format
+    phoneE164: '+14694051397', // used for tel: links and schema
     email: null, // [TO BE PROVIDED] official domain email, e.g. "info@selfdirected401kdallas.com"
 
     /**
