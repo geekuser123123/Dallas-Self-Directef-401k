@@ -112,6 +112,7 @@ export function render(page) {
 ${page.noindex ? '<meta name="robots" content="noindex, follow">' : '<meta name="robots" content="index, follow, max-image-preview:large">'}
 ${page.noindex ? "" : `<link rel="canonical" href="${canonical}">`}
 <meta name="theme-color" content="#101D32">
+${cfg.site.googleSiteVerification ? `<meta name="google-site-verification" content="${esc(cfg.site.googleSiteVerification)}">` : ""}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="${esc(B.publicName)}">
 <meta property="og:locale" content="${cfg.site.locale}">

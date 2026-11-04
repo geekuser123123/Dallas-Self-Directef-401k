@@ -55,9 +55,10 @@ give legal or tax advice. If any of that is wrong, edit:
 
 ## 5. Domain and technical
 
-- [ ] Confirm the final domain and TLD in `site.url`. **`https://selfdirected401kdallas.com` is assumed.**
-- [ ] Netlify → Domain management: add the domain, set the apex as primary, and let Netlify redirect `www`.
-- [ ] Netlify → HTTPS: confirm the Let's Encrypt certificate is active.
+- [x] `site.url` is set to `https://dallas-self-directed-401k.netlify.app`.
+- [ ] Optional, later: connect a custom domain in Netlify → Domain management, make it primary, then update `site.url`.
+- [ ] Make the Netlify project **public**, not "Private".
+- [ ] Add the Search Console HTML-tag code to `site.googleSiteVerification` (see `SEARCH-CONSOLE-SETUP.md`).
 - [ ] Netlify → Forms: enable form detection and set up an email notification (or an outgoing webhook) for the `consultation` form. Send a test submission.
 - [ ] Optional: enable privacy-friendly analytics (`analytics.plausibleDomain`).
 - [ ] Review each stock photo URL in `images` and confirm the alt text matches the image.

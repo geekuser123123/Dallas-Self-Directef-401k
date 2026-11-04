@@ -21,8 +21,14 @@
 
 export default {
   site: {
-    // Final production domain. Confirm the TLD (.com assumed). No trailing slash.
-    url: 'https://selfdirected401kdallas.com',
+    // Current production address. No trailing slash.
+    // When a custom domain (e.g. selfdirected401kdallas.com) is connected in
+    // Netlify, change this one line and redeploy — canonicals, sitemap,
+    // robots.txt and structured data all follow.
+    url: 'https://dallas-self-directed-401k.netlify.app',
+    // Google Search Console "HTML tag" verification code (content value only),
+    // e.g. 'AbCdEf123...'. Needed for a URL-prefix property on netlify.app.
+    googleSiteVerification: null,
     locale: 'en_US',
     language: 'en-US',
     // Optional default social share image (absolute URL). null = use hero image.

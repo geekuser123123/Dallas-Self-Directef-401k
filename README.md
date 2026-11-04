@@ -20,8 +20,8 @@ To preview it locally, run `npm run serve` or serve `dist/` with any static serv
 2. Under **Site configuration → Forms**, enable form detection. The `consultation` form
    on `/contact/` is captured automatically, with honeypot spam filtering. Set up email
    notifications or an outgoing webhook there.
-3. Connect the custom domain (`selfdirected401kdallas.com`, once the TLD is confirmed)
-   and make sure HTTPS is active.
+3. The site currently runs at **https://dallas-self-directed-401k.netlify.app** (`site.url`).
+   When a custom domain is connected later, update `site.url` in `site.config.mjs` and push.
 
 ## Where things live
 
