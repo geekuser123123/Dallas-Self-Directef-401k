@@ -28,7 +28,7 @@ export default {
     url: 'https://dallas-self-directed-401k.netlify.app',
     // Google Search Console "HTML tag" verification code (content value only),
     // e.g. 'AbCdEf123...'. Needed for a URL-prefix property on netlify.app.
-    googleSiteVerification: null,
+    googleSiteVerification: 'iAOmuZdy48_sDK6XIult8DedzGw5rXNY1x6MZjy0vic',
     locale: 'en_US',
     language: 'en-US',
     // Optional social share image (absolute URL). null = built-in branded /assets/img/og-image.png
