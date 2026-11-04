@@ -1,3 +1,4 @@
+import { markSvg } from './brand.mjs';
 import { cfg, B, SITE, esc, absUrl, OG_IMAGE, organizationSchema, websiteSchema, breadcrumbSchema, phoneHtml, emailHtml, showAddress, addressHtml, SERVICES } from './lib.mjs';
 
 const NAV = [
@@ -7,9 +8,9 @@ const NAV = [
   { name: 'Contact', path: '/contact/' },
 ];
 
-const logo = (cls = '') => `<a class="brand ${cls}" href="/" aria-label="${esc(B.publicName)} — home">
-  <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true" focusable="false"><rect width="40" height="40" rx="8" fill="#147D80"/><path d="M11 28V12h7.5c5 0 8.5 3.2 8.5 8s-3.5 8-8.5 8H11Z" fill="none" stroke="#fff" stroke-width="2.6"/><path d="M24 30h6" stroke="#C5A15A" stroke-width="2.6" stroke-linecap="round"/></svg>
-  <span class="brand__text"><span class="brand__name">Dallas</span><span class="brand__sub">Self-Directed 401(k)</span></span>
+const logo = (cls = '', id = 'mk') => `<a class="brand ${cls}" href="/" aria-label="${esc(B.publicName)} — home">
+  ${markSvg(id)}
+  <span class="brand__text"><span class="brand__kicker">Dallas</span><span class="brand__name">Self-Directed 401(k)</span></span>
 </a>`;
 
 function header(path) {
@@ -35,7 +36,7 @@ function footer() {
   return `<footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-brand">
-      ${logo('brand--light')}
+      ${logo('brand--light', 'mk-f')}
       <p>Educational information and consultations about Self-Directed 401(k) and Solo 401(k) retirement plan structures for business owners and self-employed professionals.</p>
     </div>
     <nav aria-label="Footer — site">

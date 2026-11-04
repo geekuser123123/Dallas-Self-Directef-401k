@@ -1,0 +1,12 @@
+// Brand mark — generated from Playfair Display Bold "D" outlines (no font dependency).
+export const D_PATH = 'M342.6 708Q540.2 708 635.9 618.5Q731.6 529 731.6 362Q731.6 253 684.6 171.5Q637.6 90 548.5 45Q459.4 0 333.6 0Q318 0 292.1 1Q266.2 2 238.2 2.5Q210.2 3 187.6 3Q143.6 3 101.5 2.5Q59.4 2 33.6 0V20Q65.8 22 81.8 28Q97.8 34 103.2 52Q108.6 70 108.6 106V602Q108.6 639 103.2 656.5Q97.8 674 81.5 680.5Q65.2 687 33.6 688V708Q59.4 707 101.5 705.5Q143.6 704 185.6 705Q221.8 706 267.3 707Q312.8 708 342.6 708ZM341.6 690Q295.6 690 281.6 673Q267.6 656 267.6 604V104Q267.6 52 282.1 35Q296.6 18 342.6 18Q427 18 475.6 57.5Q524.2 97 544.9 173Q565.6 249 565.6 358Q565.6 470 543.3 543.5Q521 617 471.9 653.5Q422.8 690 341.6 690Z';
+export const D_TRANSFORM = 'translate(12.11 33.5) scale(0.03107 -0.03107)';
+
+/** Logo mark SVG. `id` must be unique per page instance (gradient reference). */
+export function markSvg(id = 'm', cls = 'brand__mark') {
+  return `<svg class="${cls}" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><defs><linearGradient id="${id}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1A8E91"/><stop offset="1" stop-color="#0E5E61"/></linearGradient></defs><rect width="48" height="48" rx="11" fill="url(#${id})"/><rect x="3" y="3" width="42" height="42" rx="8.5" fill="none" stroke="#fff" stroke-opacity=".28" stroke-width=".9"/><path transform="${D_TRANSFORM}" fill="#fff" d="${D_PATH}"/><rect x="18" y="38.5" width="12" height="1.8" rx=".9" fill="#C5A15A"/></svg>`;
+}
+
+/** Standalone SVG file (favicon / logo exports). */
+export const markFile = () =>
+  markSvg('g', 'mark').replace('<svg class="mark"', '<svg xmlns="http://www.w3.org/2000/svg"').replace(' aria-hidden="true" focusable="false"', '');
