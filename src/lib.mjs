@@ -105,8 +105,9 @@ export function phoneHtml() {
   return ph(null, 'Business phone — to be provided');
 }
 export function emailHtml() {
+  // Optional: when no email is set, the line is omitted and visitors use the contact form.
   if (B.email) return `<a href="mailto:${esc(B.email)}">${esc(B.email)}</a>`;
-  return ph(null, 'Business email — to be provided');
+  return '';
 }
 export const showAddress = () => B.locationType === 'office';
 export function addressHtml() {

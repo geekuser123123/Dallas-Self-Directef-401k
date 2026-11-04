@@ -130,7 +130,7 @@ ${team()}
   <div class="container narrow center">
     <p class="eyebrow">Contact Our Team</p>
     <h2 id="contact-team-h">Questions? We're happy to talk.</h2>
-    <p>${esc(B.publicName)} · ${phoneHtml()} · ${emailHtml()}</p>
+    <p>${esc(B.publicName)} · ${phoneHtml()}${B.email ? ` · ${emailHtml()}` : ''}</p>
     ${showAddress() ? `<p>${addressHtml()}</p>` : ''}
     <a class="btn btn--primary" href="/contact/">Contact Us</a>
   </div>

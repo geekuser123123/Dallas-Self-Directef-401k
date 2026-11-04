@@ -49,7 +49,7 @@ ${pageHero({
             : `<li>${icon('pin', 'contact-list__icon')}<div><span class="contact-list__label">Service area</span>${esc(B.serviceArea.join(' · '))}</div></li>`
         }
         <li>${icon('phone', 'contact-list__icon')}<div><span class="contact-list__label">Phone</span>${phoneHtml()}</div></li>
-        <li>${icon('mail', 'contact-list__icon')}<div><span class="contact-list__label">Email</span>${emailHtml()}</div></li>
+        <li>${icon('mail', 'contact-list__icon')}<div><span class="contact-list__label">${B.email ? 'Email' : 'Online'}</span>${B.email ? emailHtml() : 'Use the consultation form on this page'}</div></li>
         <li>${icon('clock', 'contact-list__icon')}<div><span class="contact-list__label">Business hours (Central Time)</span>${hoursHtml()}</div></li>
       </ul>
       ${mapEmbed()}

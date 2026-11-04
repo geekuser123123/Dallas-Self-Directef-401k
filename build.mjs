@@ -71,6 +71,7 @@ if (B.locationType === 'unconfirmed') list.push('Confirm location type: office /
 
 console.log(`✔ Built ${pages.length} pages → dist/  (asset v${assetVersion})`);
 console.log(`✔ sitemap.xml (${indexable.length} URLs), robots.txt`);
+if (!B.email) console.log('ℹ Optional: no business email set — email lines are hidden; visitors use the contact form.');
 if (list.length) {
   console.warn(`\n⚠ ${list.length} launch item(s) still need real information:`);
   for (const m of list) console.warn(`   • ${m}`);

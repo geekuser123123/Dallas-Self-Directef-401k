@@ -2,7 +2,7 @@ import { pageHero, esc, B, cfg, phoneHtml, emailHtml } from '../lib.mjs';
 
 const UPDATED = 'November 4, 2026';
 const N = esc(B.publicName);
-const contactBlock = () => `<p><strong>${N}</strong><br>Email: ${emailHtml()}<br>Phone: ${phoneHtml()}<br>Or use our <a href="/contact/">contact form</a>.</p>`;
+const contactBlock = () => `<p><strong>${N}</strong><br>${B.email ? `Email: ${emailHtml()}<br>` : ''}Phone: ${phoneHtml()}<br>Or use our <a href="/contact/">contact form</a>.</p>`;
 
 const legal = (path, name, title, description, lead, body) => {
   const crumbs = [

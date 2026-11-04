@@ -60,7 +60,7 @@ function footer() {
         <strong>${esc(B.publicName)}</strong><br>
         ${showAddress() ? addressHtml() + '<br>' : `Serving ${esc(B.serviceArea.join(' & '))}<br>`}
         ${phoneHtml()}<br>
-        ${emailHtml()}
+        ${B.email ? emailHtml() : '<a href="/contact/">Send us a message</a>'}
       </address>
     </div>
   </div>

@@ -53,7 +53,7 @@ export default {
 
     phone: '(469) 405-1397', // display format
     phoneE164: '+14694051397', // used for tel: links and schema
-    email: null, // [TO BE PROVIDED] official domain email, e.g. "info@selfdirected401kdallas.com"
+    email: null, // optional — hidden until set; visitors use the contact form. e.g. "info@yourdomain.com"
 
     /**
      * locationType:
