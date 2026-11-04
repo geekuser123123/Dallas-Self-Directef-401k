@@ -25,7 +25,7 @@ Fill these in `site.config.mjs` (and `src/pages/*` where noted), then run
 | Street address and ZIP | `business.address` | **Only if** you have a staffed office that receives customers. Otherwise leave it `null`. Never use a virtual office, UPS box or coworking mailbox. |
 | Coordinates | `business.geo` | Only the exact coordinates of a real office. |
 | **Business hours** | `business.hours` | Genuine hours when someone can be reached. |
-| Service area | `business.serviceArea` | Defaults to Dallas, TX and the DFW Metroplex. Adjust it to match reality. |
+| Service area | `business.serviceArea` | Set to Dallas, TX. Adjust it to match reality. |
 | Official social profiles | `business.sameAs` | Only real, active company profiles. Add the Google Business Profile URL once it is live. |
 
 ## 3. Services (confirm what you actually offer)

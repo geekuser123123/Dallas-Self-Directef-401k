@@ -80,7 +80,7 @@ export default {
     geo: null, // { latitude: 32.0, longitude: -96.0 }
 
     // Shown when locationType is "service-area" (and as general market copy).
-    serviceArea: ['Dallas, TX', 'Dallas–Fort Worth Metroplex'],
+    serviceArea: ['Dallas, TX'],
 
     /**
      * Genuine business hours, or null.
