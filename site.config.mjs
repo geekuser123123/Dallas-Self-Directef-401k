@@ -89,7 +89,9 @@ export default {
      *   { days: ['Monday','Tuesday','Wednesday','Thursday','Friday'], opens: '09:00', closes: '17:00' },
      * ]
      */
-    hours: null,
+    hours: [
+      { days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '09:00', closes: '17:00' },
+    ],
     hoursNote: 'Consultations by appointment.', // edit or set null
 
     // Genuine official profiles only (LinkedIn company page, GBP URL once live, etc.).
